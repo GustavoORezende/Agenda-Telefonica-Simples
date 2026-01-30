@@ -10,7 +10,7 @@ import { Contact } from '../../models/contact';
 export class Table {
   @Input() contacts: Contact[] = [];
    @Output() delete = new EventEmitter<number>()
-   onDelete(id:number){
+   onCardDelete(id:number){
   this.delete.emit(id);
 }
 

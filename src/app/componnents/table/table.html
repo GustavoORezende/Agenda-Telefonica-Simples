@@ -1,1 +1,1 @@
-<app-card *ngFor="let contact of contacts" [contact] = "contact" (delete) = "onDelete(contact.id)"></app-card>>
+<app-card *ngFor="let contact of contacts" [contact] = "contact" (delete) = "onCardDelete($event)"> </app-card>

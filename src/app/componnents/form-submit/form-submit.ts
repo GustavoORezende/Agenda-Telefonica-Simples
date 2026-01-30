@@ -11,19 +11,20 @@ import { NgForm } from '@angular/forms';
   styleUrl: './form-submit.scss',
 })
 export class FormSubmit {
-  Contact = {
+  contact: Contact = {
   name: '',
   phoneNumber: '',
 }
   contacts: Contact[] = []
   @Output() create = new EventEmitter<Contact>()
- 
+ isDisabled = false;
 
 onSubmit(form?:NgForm) {
-  const newContact = {id: Date.now(), ...this.Contact}
+  if (form?.invalid) return;
+  const newContact = {id: Date.now(), ...this.contact}
   this.create.emit(newContact);
 form?.resetForm();
-this.Contact = { name: '', phoneNumber: ''}
+this.contact = { name: '', phoneNumber: ''}
 };
 
 }
