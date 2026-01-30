@@ -188,8 +188,8 @@
     <div >
       
       <app-header/>
-      <app-form-submit (create) ="addContact($event)"></app-form-submit>
-      <app-table [contacts] = "contacts" (delete) ="deleteContact($event)"></app-table>
+      <app-form-submit (create) ="addContact($event)" [editingContact]="editingContact" (update) = "onUpdate($event)"></app-form-submit>
+      <app-table [contacts] = "contacts" (delete) ="deleteContact($event)" (edit) = "onEdit($event)"></app-table>
       
     </div>
     

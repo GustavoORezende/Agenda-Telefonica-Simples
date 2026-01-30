@@ -13,5 +13,9 @@ export class Card {
   onDelete(){
     this.delete.emit(this.contact.id);
   }
+  @Output() edit = new EventEmitter<Contact>();
+  onEdit(){
+    this.edit.emit({...this.contact});
+  }
 
 }

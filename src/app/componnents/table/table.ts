@@ -10,6 +10,10 @@ import { Contact } from '../../models/contact';
 export class Table {
   @Input() contacts: Contact[] = [];
    @Output() delete = new EventEmitter<number>()
+  @Output() edit = new EventEmitter<Contact>();
+   onCardEdit(contact: Contact){
+    this.edit.emit(contact);
+  }
    onCardDelete(id:number){
   this.delete.emit(id);
 }

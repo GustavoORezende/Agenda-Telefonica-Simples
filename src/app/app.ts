@@ -1,4 +1,5 @@
 import { Component, signal } from '@angular/core';
+import { Contact } from './models/contact';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +9,10 @@ import { Component, signal } from '@angular/core';
 })
 
 export class App {
-  contacts: any[] = [];
+  contacts: Contact[] = [];
+  editingContact?: Contact;
 
-  addContact(contact:any){
+  addContact(contact:Contact){
     this.contacts = [...this.contacts, contact];
     localStorage.setItem('contacts', JSON.stringify(this.contacts));
   }
@@ -19,5 +21,12 @@ export class App {
     localStorage.setItem('contacts', JSON.stringify(this.contacts));
   }
 
+  onEdit(contact: Contact){
+    this.editingContact = {...contact};
+  }
+  onUpdate(updated: Contact){
+    this.contacts = this.contacts.map(c => c.id === updated.id ? updated : c);
+  this.editingContact = undefined;
+    localStorage.setItem('contacts', JSON.stringify(this.contacts));}
 
 }
