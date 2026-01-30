@@ -17,5 +17,13 @@ export class Card {
   onEdit(){
     this.edit.emit({...this.contact});
   }
+  message = '';
+  sendMessage(){
+    let phone = this.contact.phoneNumber;
+    const text = (this.message || '').trim();
+  const encoded = text ? '?text=' + encodeURIComponent(text) : '';
+  const url = `https://wa.me/${phone}${encoded}`;
+  window.open(url, '_blank', 'noopener,noreferrer');
+  }
 
 }
