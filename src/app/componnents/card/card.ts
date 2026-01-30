@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Contact } from '../../models/contact';
 
 @Component({
   selector: 'app-card',
@@ -7,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './card.scss',
 })
 export class Card {
+  @Input() contact!: Contact;
+  @Output() delete = new EventEmitter<number>();
+  onDelete(){
+    this.delete.emit(this.contact.id);
+  }
 
 }

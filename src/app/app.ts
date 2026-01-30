@@ -6,7 +6,18 @@ import { Component, signal } from '@angular/core';
   standalone: false,
   styleUrl: './app.scss'
 })
+
 export class App {
-  protected readonly title = signal('agendaTelefone');
+  contacts: any[] = [];
+
+  addContact(contact:any){
+    this.contacts = [...this.contacts, contact];
+    localStorage.setItem('contacts', JSON.stringify(this.contacts));
+  }
+  deleteContact(id:number){
+    this.contacts = this.contacts.filter(x=> x.id !== id);
+    localStorage.setItem('contacts', JSON.stringify(this.contacts));
+  }
+
 
 }

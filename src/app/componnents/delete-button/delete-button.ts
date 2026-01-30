@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './delete-button.scss',
 })
 export class DeleteButton {
-
+  delete() : void {
+    console.log("Deletado com sucesso!")
+  }
 }

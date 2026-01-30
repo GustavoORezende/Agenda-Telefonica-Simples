@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './edit-button.scss',
 })
 export class EditButton {
-
+  edit() : void {
+    console.log("Editado com sucesso!")
+  }
 }
