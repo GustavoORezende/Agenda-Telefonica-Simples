@@ -5,8 +5,8 @@ import { Observable } from 'rxjs';
 
 export interface Contact{
   id?: number;
-  name: string;
-  phoneNumber: string;
+  nome: string;
+  telefone: string;
 
 }
 

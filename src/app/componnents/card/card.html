@@ -1,12 +1,13 @@
-<p> Name: {{contact.name}}</p>
-<p>Phone: {{contact.phoneNumber}}</p>
+<p> Name: {{contact.nome}}</p>
+<p>Phone: {{contact.telefone}}</p>
+
 <form #messageForm = "ngForm" (ngSubmit)  = "sendMessage()" >
 <div>
     <label for = "message">Mensagem:</label>
     <textarea name="message" id="message" [(ngModel)]="message"></textarea>
 </div>
 <div> 
-    <button type="submit" [disabled]="!message.trim() || !contact.phoneNumber">
+    <button type="submit" [disabled]="!message.trim() || !contact.telefone">
         Enviar
     </button>
 </div>

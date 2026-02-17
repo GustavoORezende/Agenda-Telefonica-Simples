@@ -19,8 +19,8 @@ export class Card {
   }
   message = '';
   sendMessage(){
-    let phone = this.contact.phoneNumber;
-    const text = (this.message || '').trim();
+  let phone = this.contact.telefone;
+  const text = (this.message || '').trim();
   const encoded = text ? '?text=' + encodeURIComponent(text) : '';
   const url = `https://wa.me/${phone}${encoded}`;
   window.open(url, '_blank', 'noopener,noreferrer');

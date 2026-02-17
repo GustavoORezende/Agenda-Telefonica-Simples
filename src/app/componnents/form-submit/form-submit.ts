@@ -12,8 +12,8 @@ import { NgForm } from '@angular/forms';
 })
 export class FormSubmit {
   contact: Contact = {
-  name: '',
-  phoneNumber: '',
+  nome: '',
+  telefone: '',
 }
   contacts: Contact[] = []
   @Output() create = new EventEmitter<Contact>()
@@ -31,7 +31,7 @@ onSubmit(form?:NgForm) {
   
   
   form?.resetForm();
-  this.contact = { name: '', phoneNumber: ''}
+  this.contact = { nome: '', telefone: ''}
 };
 
 @Input() editingContact?: Contact;
