@@ -15,7 +15,7 @@ export interface Contact{
 })
 
 export class ApiService {
-  private readonly apiUrl = 'https://localhost:7089/api/contatos'
+  private readonly apiUrl = 'http://localhost:5010/api/contatos'
 
 
 constructor(private readonly http: HttpClient) {}

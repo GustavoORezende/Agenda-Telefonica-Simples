@@ -1,6 +1,6 @@
 import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { Table } from './componnents/table/table';
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { Card } from './componnents/card/card';
@@ -10,7 +10,7 @@ import { Header } from './componnents/header/header';
 import { FormsModule } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
 import { FormSubmit } from './componnents/form-submit/form-submit';
-import { Table } from './componnents/table/table';
+
 
 @NgModule({
   declarations: [
