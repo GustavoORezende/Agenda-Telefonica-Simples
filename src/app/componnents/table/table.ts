@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Contact } from '../../models/contact';
 import { ApiService } from '../../services/api';
 
@@ -10,6 +10,7 @@ import { ApiService } from '../../services/api';
 })
 export class Table implements OnInit {
   contacts: Contact[] = [];
+  editingContact?: Contact;
   constructor(private readonly apiService: ApiService){}
   @Output() delete = new EventEmitter<number>();
   @Output() edit = new EventEmitter<Contact>();
@@ -21,10 +22,15 @@ export class Table implements OnInit {
     })
   }
    onCardEdit(contact: Contact){
-    this.edit.emit(contact);
+   this.editingContact = {...contact};
   }
    onCardDelete(id:number){
-  this.delete.emit(id);
+  this.apiService.deleteContato(id).subscribe(() => {
+    this.contacts = this.contacts.filter(c => c.id !== id);
+  },
+(error) => console.error('Erro em onCardDelete', error)
+    );
+  }
 }
 
-}
+

@@ -1,14 +1,9 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Contact } from '../models/contact';
 
 
-export interface Contact{
-  id?: number;
-  nome: string;
-  telefone: string;
-
-}
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +31,7 @@ updateContato(contato: Contact): Observable<any> {
     return this.http.put(`${this.apiUrl}/${contato.id}`, contato);
   }
 
-   deleteContato(id: number): Observable<any> {
+deleteContato(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 };
