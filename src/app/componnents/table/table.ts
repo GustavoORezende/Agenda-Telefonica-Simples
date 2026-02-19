@@ -12,6 +12,7 @@ export class Table implements OnInit {
   contacts: Contact[] = [];
   editingContact?: Contact;
   constructor(private readonly apiService: ApiService){}
+  //Eventos a serem passado para App = componente pai
   @Output() delete = new EventEmitter<number>();
   @Output() edit = new EventEmitter<Contact>();
 
@@ -22,15 +23,15 @@ export class Table implements OnInit {
     })
   }
    onCardEdit(contact: Contact){
-   this.editingContact = {...contact};
+    ////reencaminha o evento para App = componente pai
+   this.edit.emit(contact);
   }
    onCardDelete(id:number){
-  this.apiService.deleteContato(id).subscribe(() => {
-    this.contacts = this.contacts.filter(c => c.id !== id);
-  },
-(error) => console.error('Erro em onCardDelete', error)
-    );
+    //reencaminha o evento para App = componente pai
+  this.delete.emit(id);
   }
+
+
 }
 
 
