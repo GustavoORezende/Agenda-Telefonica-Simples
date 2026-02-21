@@ -25,11 +25,11 @@ export class FormSubmit implements OnChanges {
 
   constructor(private readonly apiService: ApiService) {};
 
-  
-
 onSubmit(form?:NgForm) {
   if (form?.invalid) return;
+
   if (this.editingContact?.id) {
+    // Se Conato existe, então é update
     //chama API e emite para App
     //Qual o propósito de isDisabled? Se for para evitar múltiplos cliques, não seria melhor desabilitar o botão de submit?
     this.isDisabled = true;
@@ -62,8 +62,8 @@ onSubmit(form?:NgForm) {
 }
 }
   private resetForm(form?: NgForm) {
-      form?.resetForm();
-  this.contact = { nome: '', telefone: ''};
+    form?.resetForm();
+    this.contact = { nome: '', telefone: ''};
   }
 ngOnChanges(changes: SimpleChanges) {
   if (changes['editingContact'] && this.editingContact) {

@@ -12,8 +12,8 @@
 
 
 <div> 
-    <button type="submit" [disabled]="contactForm.invalid">
-        Criar
+    <button type="submit" [disabled]="contactForm.invalid || isDisabled">
+        {{editingContact?.id ? 'Atualizar' : 'Criar'}}
     </button>
 </div>
 
