@@ -1,4 +1,4 @@
-import { Component, Input, signal } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Contact } from './models/contact';
 import { ApiService } from './services/api';
 
@@ -9,16 +9,20 @@ import { ApiService } from './services/api';
   styleUrl: './app.scss'
 })
 
-export class App {
+export class App implements OnInit {
   isDisabled = false;
-  
   contacts: Contact[] = [];
   editingContact?: Contact;
   constructor(private readonly apiService: ApiService){}
+   ngOnInit(){
+    this.apiService.getContatos().subscribe((data: Contact[]) => {
+      this.contacts = data;
+      console.log('Contatos carregados:', this.contacts);
+    })
+  }
+
   deleteContact(id:number){
     this.isDisabled = true;
-
-    
     this.apiService.deleteContato(id).subscribe( ()  => {
     this.contacts = this.contacts.filter(x=> x.id !== id);
     this.isDisabled = false;  
@@ -29,6 +33,7 @@ export class App {
   }
 );
   }
+  
 //recebe edit de Table
   onEdit(contact: Contact){
     this.editingContact = {...contact};
