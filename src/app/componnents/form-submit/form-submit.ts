@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { Contact } from '../../models/contact';
 import { NgForm } from '@angular/forms';
 import { ApiService } from '../../services/api';
@@ -10,6 +10,7 @@ import { ApiService } from '../../services/api';
   standalone: false,
   templateUrl: './form-submit.html',
   styleUrls: ['./form-submit.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormSubmit implements OnChanges {
   //Por que eu preciso definir contact aqui se ja importa o model?
