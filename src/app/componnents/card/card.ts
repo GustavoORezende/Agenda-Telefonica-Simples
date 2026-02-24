@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { Contact } from '../../models/contact';
 
 @Component({
@@ -6,6 +6,7 @@ import { Contact } from '../../models/contact';
   standalone: false,
   templateUrl: './card.html',
   styleUrl: './card.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Card {
   @Input() contact!: Contact;
